@@ -33,13 +33,13 @@ func mustStartMongoContainer() (func(context.Context) error, error) {
 func TestMain(m *testing.M) {
 	teardown, err := mustStartMongoContainer()
 	if err != nil {
-		log.Fatalf("could not start postgres container: %v", err)
+		log.Fatalf("could not start Postgres container: %v", err)
 	}
 
 	m.Run()
 
 	if teardown != nil && teardown(context.Background()) != nil {
-		log.Fatalf("could not teardown postgres container: %v", err)
+		log.Fatalf("could not teardown Postgres container: %v", err)
 	}
 }
 
@@ -55,7 +55,7 @@ func TestHealth(t *testing.T) {
 
 	stats := srv.Health()
 
-	if stats["message"] != "It's healthy" {
-		t.Fatalf("expected message to be 'It's healthy', got %s", stats["message"])
+	if stats["message"] != "All calm on the Westerosi front." {
+		t.Fatalf("expected message to be 'All calm on the Westerosi front.', got %s", stats["message"])
 	}
 }
