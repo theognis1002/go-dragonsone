@@ -6,14 +6,12 @@ import (
 
 func (s *FiberServer) RegisterFiberRoutes() {
 	s.App.Get("/", s.HelloWorldHandler)
-
 	s.App.Get("/health", s.healthHandler)
-
 }
 
 func (s *FiberServer) HelloWorldHandler(c *fiber.Ctx) error {
 	resp := fiber.Map{
-		"message": "Hello World",
+		"message": "success!",
 	}
 
 	return c.JSON(resp)
